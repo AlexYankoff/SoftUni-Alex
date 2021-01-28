@@ -3,4 +3,5 @@ function prtString(inp) {
     console.log(input.length);
     console.log(input);
 }
-prtString("Hi");
+prtString("Hi")
+console.log('Hi Saho ! :)');
