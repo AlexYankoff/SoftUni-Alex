@@ -1,14 +1,16 @@
-function add (){
+function add(a) {
     let sum = 0;
-    sum +=a;
+    sum += a;
 
-    function calc(b){
-        sum =+ b;
+    function calc(b) {
+        sum += b;
+        console.log(calc);
         return calc;
-}
-calc.toString = () => sum;
-return calc;
+    }
+
+    calc.toString =() => sum;
+    return calc;
 }
 
-let f = add()
-console.log(f(1)(2)(3))
+add(1);
+add(1)(6)(-3);
