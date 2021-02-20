@@ -1,3 +1,5 @@
+
+
 let dealership = {
     newCarCost: function (oldCarModel, newCarPrice) {
 

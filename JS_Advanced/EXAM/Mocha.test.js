@@ -19,7 +19,7 @@ describe ('Even or Odd', () => { //mocha
         assert.equal(isOddOrEven('asd'), 'odd')
     });
 
-    it('test if oddn', () => {
+    it('test matrix', () => {
         assert.deepEqual(matrix(), [1,2,3])  //deepEqual за матрици, обекти и т.н.
     });
 
