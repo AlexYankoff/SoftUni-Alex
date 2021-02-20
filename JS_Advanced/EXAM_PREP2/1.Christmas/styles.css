@@ -9,7 +9,7 @@ h1 {
     margin: auto;
     text-align: center;
     padding: 10px;
-    color: red;
+    color: rgb(175, 50, 50);
 }
 
 h2 {
@@ -39,7 +39,7 @@ section {
     text-align: center;
     color: white;
     margin: auto;
-    background-color: rgb(255,0,0, 0.777);
+    background-color: rgba(107, 55, 55, 0.777);
     width: 25%;
     border-radius: 20px;
     padding: 10px;
