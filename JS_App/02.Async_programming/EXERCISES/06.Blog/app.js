@@ -48,30 +48,26 @@ async function view() {
     ]);
 
     //const requestPost = await fetch(urlSelectedPost);
-    const dataPost = await requestPost.json()
-    
+    const dataPost = await requestPost.json();
 
-    //const requestComments = await fetch(urlComments)
-    const dataComments = await requestComments.json()
-
-    
-
+    //const requestComments = await fetch(urlComments);
+    const dataComments = await requestComments.json();
 
     document.getElementById('post-title').textContent = dataPost.title;
     document.getElementById('post-body').textContent = dataPost.body;
     const comments = Object.values(dataComments).filter(c =>c.postId == postId)
     
-    const commentsUl = document.getElementById('post-comments')
+    const commentsUl = document.getElementById('post-comments');
 
-    commentsUl.innerHTML = ''
+    commentsUl.innerHTML = '';
     
 
-    comments.map(createComment).forEach(c => commentsUl.appendChild(c))
-}
+    comments.map(createComment).forEach(c => commentsUl.appendChild(c));
+};
 
 function createComment(comment) {
-    const result = document.createElement('li')
-    result.textContent = comment.text
-    result.id = comment.id
+    const result = document.createElement('li');
+    result.textContent = comment.text;
+    result.id = comment.id;
     return result;
 }
