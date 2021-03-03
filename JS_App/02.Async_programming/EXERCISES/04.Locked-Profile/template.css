@@ -70,9 +70,9 @@ button {
   margin: 0 auto;
 }
 
-input[name="user3Username"],
-input[name="user2Username"],
-input[name="user1Username"] {
+
+input[type="text"],
+input[type = 'email'] {
   display: inline-block;
   width: 100%;
 }
@@ -88,3 +88,11 @@ input[name="user1Username"] {
 #user3HiddenFields {
   display: none;
 }
+
+.hidden {
+  display: none
+}
+.visible {
+  display: block
+}
+
