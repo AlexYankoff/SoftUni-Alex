@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <form method = 'POST' action = 'users/register'>
+        <label> Email<input type='text' name='email'></label>
+        <label>Password:<input type='password' name='password' /></label>
+        <label>Repeat:<input type = 'password' name='repass'/></label>
+
+        <input type='submit' value='Register'>
+    </form>
+    <script>
+        async function getData() {
+            const response = await fetch('http://localhost:3030/jsonstore/advanced/articles/details');
+            const data = await response.json();
+            console.log(data);
+        }
+
+        async function posData(data) {//example data {title:'New from Sasho', content:" Нов текст от Сашо"}
+            const response = await fetch('http://localhost:3030/jsonstore/advanced/articles/details', {
+                method:'post',
+                headers: {'Content-type':'application/json'},
+                body: JSON.stringify(data),
+            });
+                console.log(response);
+
+                const result = await response.json();
+                console.log(result);
+
+            }
+        async function updateData(id, data) {
+            const response = await fetch('http://localhost:3030/jsonstore/advanced/articles/details/'+id, {
+                method:'put',
+                headers:{'Content-type':'application/json'},
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result);
+            }
+        
+        async function deleteData (id) {
+            const response = await fetch('http://localhost:3030/jsonstore/advanced/articles/details/'+id, {
+            method:'delete'
+            });
+            const result = await response.json();
+            console.log(result);
+        }
+        
+        
+        
+    </script>
+    
+</body>
+</html>

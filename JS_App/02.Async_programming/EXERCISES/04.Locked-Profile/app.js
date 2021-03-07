@@ -5,9 +5,7 @@ function lockedProfile() {
     function onClick(ev) {
         if (ev.target.tagName == 'BUTTON') {
             const profile = ev.target.parentNode;
-            console.log(profile)
-            
-            
+            console.log(profile)          
             
             let isLocked = profile.querySelector('input[type=radio]:checked').value =='lock';
             if (isLocked) {return;}
@@ -24,10 +22,6 @@ function lockedProfile() {
         }
     }
     getProfiles()
-
-    
-       
-    
         
 }
 
@@ -37,11 +31,7 @@ async function getProfiles(){
     const data = await response.json();
     Object.values(data).forEach(profile =>createElement(profile))
 }
-/*
-function generateProfiles(data) {
-    Object.values(data).forEach(profile =>console.log(profile))
-}
-*/
+
 function createElement(profile) {
     const profileElement = e('div', {className: 'profile'},
         e('img',{className:'userIcon', src:"./iconProfile2.png"}),

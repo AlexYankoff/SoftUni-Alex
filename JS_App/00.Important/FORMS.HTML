@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <form method = 'POST' action = 'users/register'>
+        <label> Email<input type='text' name='email'></label>
+        <label>Password:<input type='password' name='password' /></label>
+        <label>Repeat:<input type = 'password' name='repass'/></label>
+
+        <input type='submit' value='Register'>
+    </form>
+    <script>
+        async function register(email, password) {
+            const response = await fetch('http://localhost:3030/users/register', { 
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({email, password})
+            });
+
+            if (respnse.ok) {
+                const data = await response.json()
+                console.log(data);
+            } else {
+                alert(`Error: ${respnse.statusText}`);
+            }
+
+        }
+    </script>
+    
+</body>
+</html>
