@@ -1,5 +1,8 @@
 import {html, render} from '../node_modules/lit-html/lit-html.js';
-// get data
+
+const tbody = document.getElementsByTagName('tbody')[0]
+
+document.getElementById('searchBtn').addEventListener('click', search)
 
 
 async function getData(){
@@ -11,42 +14,34 @@ async function getData(){
    
    }
 
-let match
-
 //create template for <tr> in  <tbody>
 
+const person = (data, match ='') => html `
+<tr class= ${(match&&Object.values(data).toString().toLowerCase().includes(match.toLowerCase())) ? 'select' : ''} >
+    <td>${data.firstName} ${data.lastName}</td>
+    <td>${data.email}</td>
+    <td>${data.course}</td>
+</tr>`
 
-const person = (oneRec) => html `
-   <tr>
-       <td>John Dan</td>
-       <td>john@john-dan.com</td>
-       <td>JS-CORE</td>
-   </tr>`
-
-//render
-
-function test() {
-const records = getData()
-console.log(records)
+//create table when intially loading the page
+async function createTable () {
+   const data = await getData();
+   const result = data.map(oneRec => person(oneRec));
+   render (result, tbody);
 }
-test()
-const tbody = document.getElementsByTagName('tbody')[0]
-const result = records.map(oneRec => person(oneRec))
+createTable() //When load page
 
-render(result, tbody)
-
-//check for matches, clear input field
-//render s matche, change style, с тернаре може да проверим, и стил според match(изчиства стари слекеции)
-
-
-
-
-
-function solve() {
-   document.querySelector('#searchBtn').addEventListener('click', onClick);
-
-   function onClick() {
-      //   TODO:
-
-   }
+//render the table with mathed rows, on btn click
+async function search() {
+   const data = await getData()
+   const match = document.getElementById('searchField').value
+   const result = data.map(oneRec => person(oneRec, match));;
+   render(result, tbody);
+   document.getElementById('searchField').value = ''
 }
+
+
+
+
+
+
