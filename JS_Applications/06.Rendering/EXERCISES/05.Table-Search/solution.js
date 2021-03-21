@@ -1,9 +1,8 @@
 import {html, render} from '../node_modules/lit-html/lit-html.js';
 
-const tbody = document.getElementsByTagName('tbody')[0]
+const tbody = document.getElementsByTagName('tbody')[0];
 
-document.getElementById('searchBtn').addEventListener('click', search)
-
+document.getElementById('searchBtn').addEventListener('click', search);
 
 async function getData(){
    const response = await fetch('http://localhost:3030/jsonstore/advanced/table')
@@ -33,11 +32,11 @@ createTable() //When load page
 
 //render the table with mathed rows, on btn click
 async function search() {
-   const data = await getData()
-   const match = document.getElementById('searchField').value
-   const result = data.map(oneRec => person(oneRec, match));;
+   const data = await getData();
+   const match = document.getElementById('searchField').value;
+   const result = data.map(oneRec => person(oneRec, match));
    render(result, tbody);
-   document.getElementById('searchField').value = ''
+   document.getElementById('searchField').value = '';
 }
 
 

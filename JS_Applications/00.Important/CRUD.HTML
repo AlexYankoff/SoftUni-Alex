@@ -27,7 +27,7 @@
             console.log(data);
         }
 
-        async function posData(data) {//example data {title:'New from Sasho', content:" Нов текст от Сашо"}
+        async function postData(data) {//example data {title:'New from Sasho', content:" Нов текст от Сашо"}
             const response = await fetch('http://localhost:3030/jsonstore/advanced/articles/details', {
                 method:'post',
                 headers: {'Content-type':'application/json'},
