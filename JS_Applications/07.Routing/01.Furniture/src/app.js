@@ -11,10 +11,8 @@ import {editPage} from './views/edit.js'
 import {registerPage} from './views/register.js'
 import {loginPage} from './views/login.js'
 
-import * as api from './api/data.js';
-
-
-window.api = api;
+import * as api from './api/data.js'; // за тестване на функции
+window.api = api;                      // в броузер
 
 const main = document.querySelector('.container')// SET IT
 
