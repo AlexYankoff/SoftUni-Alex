@@ -2,6 +2,7 @@
 import page from '../node_modules/page/page.mjs';
 import { render } from '../node_modules/lit-html/lit-html.js'
 
+import {logout } from './api/data.js'
 import { dashboardPage } from './views/dashboard.js'
 import {myPage} from './views/myFurniture.js'
 import {detailsPage} from './views/details.js'
@@ -25,6 +26,13 @@ page('/create', decorateContext, createPage);
 page('/edit/:id', decorateContext,editPage);
 page('/register', decorateContext,registerPage);
 page('/login', decorateContext, loginPage);
+
+//LOGOUT
+document.getElementById('logoutBtn').addEventListener('click',async () => {
+    await logout();
+    setUserNav() //ъпдейтваме навигацията при logout!
+    page.redirect('/')
+})
 
 setUserNav() // викаме я при стартиране, ако вече има логнат потребител
 
