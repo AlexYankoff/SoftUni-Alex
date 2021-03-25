@@ -9,12 +9,12 @@ export const register = api.register;
 export const logout = api.logout;
 
 //Implement  application-specific requests
-export async function getFurniture() { 
-    return await api.get(host+'/data/catalog'); 
+export async function getAll() { //OK!
+    return await api.get(host+'/data/ideas?select=_id%2Ctitle%2Cimg&sortBy=_createdOn%20desc');     
 }
 
-export async function getItemById(id) {
-    return await api.get(host+'/data/catalog/'+id)
+export async function getItemById(id) { //OK!
+    return await api.get(host+'/data/ideas/'+id)
 }
 
 export async function getMyFurniture() {
@@ -27,9 +27,6 @@ export async function createRecord(data) {
     
 }
 
-export async function editRecord(id, data) {
-    return await api.put(host+'/data/catalog/'+id, data);
-}
 
 export async function deleteRecord(id) {
     return await api.del(host+'/data/catalog/'+id);

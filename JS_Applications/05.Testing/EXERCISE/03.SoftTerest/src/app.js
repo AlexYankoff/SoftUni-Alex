@@ -24,33 +24,43 @@ page('/register', decorateContext,registerPage);
 page('/login', decorateContext, loginPage);
 
 //LOGOUT
-//document.getElementById('logoutBtn').addEventListener('click',async () => {
-//    await logout();
-//    setUserNav() //ъпдейтваме навигацията при logout!
-//    page.redirect('/')
-//})
+document.getElementById('Logout').addEventListener('click',async () => {
+    await logout();
+    setUserNav() //ъпдейтваме навигацията при logout!
+    page.redirect('/')
+})
 
-//setUserNav() // викаме я при стартиране, ако вече има логнат потребител
+setUserNav() // викаме я при стартиране, ако вече има логнат потребител
 
 //Start application
 page.start();
 
 function decorateContext(ctx, next) {
     ctx.render = (ctx) => render(ctx, main)
-    //ctx.setUserNav = setUserNav
+    ctx.setUserNav = setUserNav
     next()
 }
-/*
-function setUserNav() {
+
+function setUserNav() { //!Ok
     const userId = sessionStorage.getItem('userId');
-    if (userId !=null) {
-        document.getElementById('user').style.display = 'inline-block';
-        document.getElementById('guest').style.display = 'none'
+    if (userId !=null) { 
+        //document.getElementById('home-icon').style.display = 'none';
+        document.getElementById('Dashboard').style.display = '';
+        document.getElementById('Create').style.display = ''
+        document.getElementById('Logout').style.display = ''
+        document.getElementById('Login').style.display = 'none'
+        document.getElementById('Register').style.display = 'none'
+
+
+
     } else {
-        document.getElementById('user').style.display = 'none';
-        document.getElementById('guest').style.display = 'inline-block'
+        document.getElementById('Dashboard').style.display = '';
+        document.getElementById('Create').style.display = ''
+        document.getElementById('Logout').style.display = 'none'
+        document.getElementById('Login').style.display = ''
+        document.getElementById('Register').style.display = ''
     }
 }
 
-*/
+
 

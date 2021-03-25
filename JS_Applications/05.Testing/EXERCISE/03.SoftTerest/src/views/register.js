@@ -7,7 +7,7 @@ const registerTemplate = (onSubmit,invalidEmail, invalidPassword,invalidRe )=> h
             <div class="col-md-4">
                 <img class="responsive" src="./images/idea.png" alt="">
             </div>
-            <form class="form-user col-md-7" action="" method="">
+            <form @submit=${onSubmit} class="form-user col-md-7" action="" method="">
                 <div class="text-center mb-4">
                     <h1 class="h3 mb-3 font-weight-normal">Register</h1>
                 </div>
@@ -46,7 +46,8 @@ export async function registerPage (ctx) {
         const formData = new FormData(event.target);
         const email = formData.get('email');
         const password = formData.get('password').trim();
-        const repass = formData.get('rePass').trim()
+        const repass = formData.get('repeatPassword').trim()
+        console.log(email, password, repass);
     
         if (email== ''|| password== ''|| repass== '') {
             ctx.render(registerTemplate(onSubmit, email== '', password== '', repass== '' ))

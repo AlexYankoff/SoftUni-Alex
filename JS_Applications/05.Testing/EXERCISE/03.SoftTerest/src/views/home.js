@@ -1,5 +1,5 @@
 import { html } from '/../../node_modules/lit-html/lit-html.js'
-import { getFurniture} from '../api/data.js'
+import { getAll} from '../api/data.js'
 
 
 const homeTemplate = () => html `
@@ -23,6 +23,6 @@ const homeTemplate = () => html `
 
 export async function homePage (ctx) {
     //const data = await getFurniture()
-     console.log('homePage') 
+    console.log('homePage') 
     ctx.render(homeTemplate())
     }

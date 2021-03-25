@@ -1,5 +1,5 @@
 import { html } from '/../../node_modules/lit-html/lit-html.js'
-import { getFurniture} from '../api/data.js'
+import { getAll} from '../api/data.js'
 
 
 const dashboardTemplate = () => html `
