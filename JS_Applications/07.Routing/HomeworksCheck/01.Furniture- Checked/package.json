@@ -1,0 +1,18 @@
+{
+  "name": "routing",
+  "version": "1.0.0",
+  "description": "01.Furtiture",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -a localhost -p 8080 -P http://localhost:8080/?"
+  },
+  "keywords": [],
+  "author": "Yulia",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.12.3",
+    "lit-html": "^1.3.0",
+    "page": "^1.11.6"
+  }
+}
