@@ -1,4 +1,4 @@
-// SET THE HOST BELOW
+// SET THE MAIN  BELOW
 import page from '../node_modules/page/page.mjs';
 import { render } from '../node_modules/lit-html/lit-html.js'
 
@@ -7,7 +7,7 @@ import { dashboardPage } from './views/dashboard.js'
 import {myPage} from './views/myFurniture.js'
 import {detailsPage} from './views/details.js'
 import {createPage} from './views/create.js'
-import {editPage} from './views/edit.js'
+import {editPage} from './view s/edit.js'
 import {registerPage} from './views/register.js'
 import {loginPage} from './views/login.js'
 
@@ -44,7 +44,7 @@ function decorateContext(ctx, next) {
 }
 
 function setUserNav() {
-    const userId = sessionStorage.getItem('userId');
+    const userId = sessionStorage.getItem('userId');  //или authToken или email, едно и също е
     if (userId !=null) {
         document.getElementById('user').style.display = 'inline-block';
         document.getElementById('guest').style.display = 'none'

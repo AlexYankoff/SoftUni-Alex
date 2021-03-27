@@ -63,7 +63,7 @@ export async function editPage (ctx) {
         //MAKE OBJECT FROM ALL FORM FIELDS
         const data = ([...formData.entries()].reduce((a, [k,v]) => Object.assign(a, {[k]:v}), {}));
 
-        //ALIDATION IF ANY FIELD IS EMPTY (MATERIAL EXCLUDED)
+        //VALIDATION IF ANY FIELD IS EMPTY (MATERIAL EXCLUDED)
         if  (Object.entries(data).filter(([k, v]) => k!='material').some(([k,v]) => v=='')){
             return alert('Missing data!');
         }
