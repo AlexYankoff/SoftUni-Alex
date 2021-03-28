@@ -5,7 +5,7 @@ console.log('app.js started')
 import page from '../node_modules/page/page.mjs';
 import { render } from '../node_modules/lit-html/lit-html.js'
 
-//import {logout } from './api/data.js'
+import {logout } from './api/data.js'
 import { homePage } from './views/home.js'
 //import { dashboardPage } from './views/dashboard.js'
 //import {myPage} from './views/myFurniture.js'
@@ -29,13 +29,15 @@ page('/', decorateContext, homePage)
 //page('/edit/:id', decorateContext,editPage);
 //page('/register', decorateContext,registerPage);
 page('/login', decorateContext, loginPage);
+page('/logout', logoutAction);
 //
 //LOGOUT
-//document.getElementById('logoutBtn').addEventListener('click',async () => {
-//    await logout();
-//    setUserNav() //ъпдейтваме навигацията при logout!
-//    page.redirect('/')
-//})
+async function logoutAction() {
+    console.log('enter logout')
+    await logout();
+    setUserNav() //ъпдейтваме навигацията при logout!
+    page.redirect('/')
+}
 //
 setUserNav() // викаме я при стартиране, ако вече има логнат потребител
 //

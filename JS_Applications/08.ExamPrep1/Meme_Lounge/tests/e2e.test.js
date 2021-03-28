@@ -155,7 +155,7 @@ describe('E2E tests', function () {
             expect(postData.password).to.equal(password);
         });
 
-        it('logout makes correct API call [ 5 Points ]', async () => {
+        it.only('logout makes correct API call [ 5 Points ]', async () => {
             const loginEndpoint = '**' + endpoints.login;
             const email = 'ivan@mail.bg';
             const password = '345321';
@@ -192,7 +192,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe.only('Navigation bar [ 5 Points ]', () => {
+    describe('Navigation bar [ 5 Points ]', () => {
         const email = 'ivan@mail.bg';
         const password = '345321';
 
