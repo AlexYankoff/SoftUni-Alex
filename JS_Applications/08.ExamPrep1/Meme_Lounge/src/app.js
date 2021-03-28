@@ -13,7 +13,7 @@ import { homePage } from './views/home.js'
 //import {createPage} from './views/create.js'
 //import {editPage} from './views/edit.js'
 //import {registerPage} from './views/register.js'
-//import {loginPage} from './views/login.js'
+import {loginPage} from './views/login.js'
 //
 import * as api from './api/data.js'; // за тестване на функции
 window.api = api;                      // в броузер
@@ -28,7 +28,7 @@ page('/', decorateContext, homePage)
 //page('/create', decorateContext, createPage); 
 //page('/edit/:id', decorateContext,editPage);
 //page('/register', decorateContext,registerPage);
-//page('/login', decorateContext, loginPage);
+page('/login', decorateContext, loginPage);
 //
 //LOGOUT
 //document.getElementById('logoutBtn').addEventListener('click',async () => {
@@ -37,7 +37,7 @@ page('/', decorateContext, homePage)
 //    page.redirect('/')
 //})
 //
-//setUserNav() // викаме я при стартиране, ако вече има логнат потребител
+setUserNav() // викаме я при стартиране, ако вече има логнат потребител
 //
 //Start application
 page.start();
@@ -45,21 +45,22 @@ page.start();
 function decorateContext(ctx, next) {
     console.log('enter decorate')
     ctx.render = (ctx) => render(ctx, main)
-//    ctx.setUserNav = setUserNav
+    ctx.setUserNav = setUserNav
     next()
 }
 //
-//function setUserNav() {
-//    const userId = sessionStorage.getItem('userId');  //или authToken или email, едно и също е
-//    if (userId !=null) {
-//        document.getElementById('user').style.display = 'inline-block';
-//        document.getElementById('guest').style.display = 'none'
-//    } else {
-//        document.getElementById('user').style.display = 'none';
-//        document.getElementById('guest').style.display = 'inline-block'
-//    }
-//}
-//
+function setUserNav() {
+    
+    const email = sessionStorage.getItem('email');  //или authToken или email, едно и също е
+    if (email !=null) {
+        document.querySelector('div.profile > span').textContent =`Welcome, ${email}`;
+        document.getElementsByClassName('user')[0].style.display = '';
+        document.getElementsByClassName('guest')[0].style.display = 'none'
+    } else {
+        document.getElementsByClassName('user')[0].style.display = 'none';
+        document.getElementsByClassName('guest')[0].style.display = ''
+    }
+}
 
 
 
