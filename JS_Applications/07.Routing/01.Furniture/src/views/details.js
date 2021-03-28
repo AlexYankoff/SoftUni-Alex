@@ -44,6 +44,7 @@ export async function detailsPage (ctx) {
     async function onDelete() {
         const confirmed = confirm('Are you sure you want to delete this item?')
         if (confirmed) {
+            await deleteRecord(id);
             ctx.page.redirect(`/`)
         }
 
