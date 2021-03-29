@@ -9,12 +9,12 @@ export const register = api.register;
 export const logout = api.logout;
 
 //Implement  application-specific requests
-export async function getFurniture() { 
-    return await api.get(host+'/data/catalog'); 
+export async function getAll() { 
+    return await api.get(host+'/data/memes?sortBy=_createdOn%20desc'); 
 }
 
 export async function getItemById(id) {
-    return await api.get(host+'/data/catalog/'+id)
+    return await api.get(host+'/data/memes/'+id)
 }
 
 export async function getMyFurniture() {

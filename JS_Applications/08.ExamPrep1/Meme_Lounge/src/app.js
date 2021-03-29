@@ -7,12 +7,12 @@ import { render } from '../node_modules/lit-html/lit-html.js'
 
 import {logout } from './api/data.js'
 import { homePage } from './views/home.js'
-//import { dashboardPage } from './views/dashboard.js'
+import { dashboardPage } from './views/dashboard.js'  
 //import {myPage} from './views/myFurniture.js'
-//import {detailsPage} from './views/details.js'
+import {detailsPage} from './views/details.js'
 //import {createPage} from './views/create.js'
 //import {editPage} from './views/edit.js'
-//import {registerPage} from './views/register.js'
+import {registerPage} from './views/register.js'
 import {loginPage} from './views/login.js'
 //
 import * as api from './api/data.js'; // за тестване на функции
@@ -22,12 +22,12 @@ const main = document.querySelector('main')// SET IT
 //
 ////routing table - изпълнява дадената ф-я и й подава context
 page('/', decorateContext, homePage)
-//page('/', decorateContext, dashboardPage); //view Controller
+page('/dashboard', decorateContext, dashboardPage); //= All MEMES VIEW!
 //page('/my-furniture', decorateContext, myPage);
-//page('/details/:id', decorateContext, detailsPage);// в контекста имаме и id
+page('/details/:id', decorateContext, detailsPage);// в контекста имаме и id
 //page('/create', decorateContext, createPage); 
 //page('/edit/:id', decorateContext,editPage);
-//page('/register', decorateContext,registerPage);
+page('/register', decorateContext,registerPage);
 page('/login', decorateContext, loginPage);
 page('/logout', logoutAction);
 //

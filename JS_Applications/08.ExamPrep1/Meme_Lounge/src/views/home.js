@@ -1,5 +1,5 @@
 import { html } from '/../../node_modules/lit-html/lit-html.js'
-import { getFurniture} from '../api/data.js'
+import { getAll} from '../api/data.js'
 
 const homeTemplate = () => html `
 <section id="welcome">
@@ -9,7 +9,7 @@ const homeTemplate = () => html `
                 <h2>Login to see our memes right away!</h2>
                 <div id="button-div">
                     <a href="/login" class="button">Login</a>
-                    <a href="#" class="button">Register</a>
+                    <a href="/register" class="button">Register</a>
                 </div>
             </div>
         </section>

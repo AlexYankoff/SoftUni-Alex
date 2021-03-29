@@ -35,7 +35,7 @@ let page;
 
 describe('E2E tests', function () {
     if (DEBUG) {
-        this.timeout(120000);
+        this.timeout(5000);
     } else {
         this.timeout(6000);
     }
@@ -74,7 +74,7 @@ describe('E2E tests', function () {
         await page.close();
         await context.close();
     });
-    describe('Authentication [ 20 Points ]', () => {
+    describe('Authentication [ 20 Points ]', () => { //Ok 4 tests = 20 points
         it('register does not work with empty fields [ 5 Points ]', async () => {
             const endpoint = '**' + endpoints.register;
             let called = false;
@@ -155,7 +155,7 @@ describe('E2E tests', function () {
             expect(postData.password).to.equal(password);
         });
 
-        it.only('logout makes correct API call [ 5 Points ]', async () => {
+        it('logout makes correct API call [ 5 Points ]', async () => {
             const loginEndpoint = '**' + endpoints.login;
             const email = 'ivan@mail.bg';
             const password = '345321';
@@ -192,7 +192,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe('Navigation bar [ 5 Points ]', () => {
+    describe('Navigation bar [ 5 Points ]', () => {// Ok 2tests = 5 points
         const email = 'ivan@mail.bg';
         const password = '345321';
 
@@ -247,8 +247,8 @@ describe('E2E tests', function () {
         });
     });
 
-    describe('Catalog [ 25 Points ]', () => {
-        it('loads static home page [ 5 Points ]', async () => {
+    describe.only('Catalog [ 25 Points ]', () => { //Ok 25 points
+        it('loads static home page [ 5 Points ]', async () => { //Ok
             await page.goto(host);
 
             await page.waitForSelector('text=Welcome to Meme Lounge');
@@ -259,7 +259,7 @@ describe('E2E tests', function () {
             expect(await page.isVisible('#button-div >> text=Register')).to.be.true;
         });
 
-        it('show most recent memes [ 10 Points ]', async () => {
+        it('show most recent memes [ 10 Points ]', async () => { //Ok
             await page.goto(host);
             await page.click('text=All Memes');
             await page.waitForTimeout(300);
@@ -276,7 +276,7 @@ describe('E2E tests', function () {
             expect(titles[4]).to.contains('test 5');
         });
 
-        it('show meme details [ 5 Points ]', async () => {
+        it('show meme details [ 5 Points ]', async () => { //Ok
 
             await page.goto(host);
             await page.click('text=All Memes');

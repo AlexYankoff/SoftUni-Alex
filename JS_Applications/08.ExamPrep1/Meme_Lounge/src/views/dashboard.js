@@ -1,30 +1,41 @@
+//dashboard view e вместо All memes view
+
 import { html } from '/../../node_modules/lit-html/lit-html.js'
-import { getFurniture} from '../api/data.js'
+import { getAll} from '../api/data.js'
+
+const  dashboardTemplate = (memes) =>html `
+<section id="meme-feed">
+            <h1>All Memes</h1>
+            <div id="memes">
+                ${memes.length == 0 ? html `<p class="no-memes">
+                    No memes in database.</p>` : memes.map(memeTemplate)}
+			</div>
+        </section>`;
 
 
-const dashboardTemplate = (data) => html `
+const OLDdashboardTemplate = (data) => html `
 <div class="row space-top">
       ${data.map(itemTemplate)}      
 </div>`;
 
-const itemTemplate =(item) => html `
- <div class="col-md-4">
-    <div class="card text-white bg-primary">
-        <div class="card-body">
-                <img src=${item.img} />
-                <p>${item.description}</p>
-                <footer>
-                    <p>Price: <span>${item.price} $</span></p>
-                </footer>
-                <div>
-                    <a href=${`details/${item._id}`} class="btn btn-info">Details</a>
-                </div>
+const memeTemplate =(meme) => html `
+    <div class="meme">
+        <div class="card">
+            <div class="info">
+                <p class="meme-title">${meme.title}</p>
+                <img class="meme-image" alt="meme-img" src="${meme.imageUrl}">
+            </div>
+            <div id="data-buttons">
+                <a class="button" href="/details/${meme._id}">Details</a>
+            </div>
         </div>
-    </div>
-</div>`;
+                </div>`;
 
 export async function dashboardPage (ctx) {
-    const data = await getFurniture()
-      
+
+    console.log('enter All Memes view')
+
+    const data = await getAll()
+    console.log(data) 
     ctx.render(dashboardTemplate(data))
     }
