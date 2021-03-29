@@ -35,7 +35,7 @@ let page;
 
 describe('E2E tests', function () {
     if (DEBUG) {
-        this.timeout(5000);
+        this.timeout(120000);
     } else {
         this.timeout(6000);
     }
@@ -247,7 +247,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe.only('Catalog [ 25 Points ]', () => { //Ok 25 points
+    describe('Catalog [ 25 Points ]', () => { //Ok 25 points
         it('loads static home page [ 5 Points ]', async () => { //Ok
             await page.goto(host);
 
@@ -319,7 +319,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe('CRUD [ 40 Points ]', () => {
+    describe('CRUD [ 40 Points ]', () => { //Ok 40 points
         const email = 'ivan@mail.bg';
         const password = '345321';
 
@@ -384,6 +384,10 @@ describe('E2E tests', function () {
             ]);
 
             const postData = JSON.parse(response.request().postData());
+            console.log(postData.title, mock.title)
+            console.log(postData.description, mock.description)
+            console.log(postData.imageUrl, mock.imageUrl)
+                
 
             expect(postData.title).to.equal(mock.title);
             expect(postData.description).to.equal(mock.description);

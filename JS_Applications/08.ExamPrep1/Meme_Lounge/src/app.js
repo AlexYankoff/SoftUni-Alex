@@ -10,8 +10,8 @@ import { homePage } from './views/home.js'
 import { dashboardPage } from './views/dashboard.js'  
 //import {myPage} from './views/myFurniture.js'
 import {detailsPage} from './views/details.js'
-//import {createPage} from './views/create.js'
-//import {editPage} from './views/edit.js'
+import {createPage} from './views/create.js'
+import {editPage} from './views/edit.js'
 import {registerPage} from './views/register.js'
 import {loginPage} from './views/login.js'
 //
@@ -25,8 +25,8 @@ page('/', decorateContext, homePage)
 page('/dashboard', decorateContext, dashboardPage); //= All MEMES VIEW!
 //page('/my-furniture', decorateContext, myPage);
 page('/details/:id', decorateContext, detailsPage);// в контекста имаме и id
-//page('/create', decorateContext, createPage); 
-//page('/edit/:id', decorateContext,editPage);
+page('/create', decorateContext, createPage); 
+page('/edit/:id', decorateContext,editPage);
 page('/register', decorateContext,registerPage);
 page('/login', decorateContext, loginPage);
 page('/logout', logoutAction);

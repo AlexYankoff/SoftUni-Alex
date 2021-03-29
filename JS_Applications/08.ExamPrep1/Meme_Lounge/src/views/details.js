@@ -18,8 +18,8 @@ const detailsTemplate = (item, isOwner, onDelete) => html `
 
                     <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
                     ${isOwner ? html `
-                    <a class="button warning" href="#">Edit</a>
-                    <button class="button danger">Delete</button>`
+                    <a class="button warning" href="/edit/${item._id}">Edit</a>
+                    <button @click = ${onDelete}  class="button danger">Delete</button>`
                     : ''}
                 </div>
             </div>
@@ -70,7 +70,7 @@ export async function detailsPage (ctx) {
         const confirmed = confirm('Are you sure you want to delete this item?')
         if (confirmed) {
             await deleteRecord(id);
-            ctx.page.redirect(`/`)
+            ctx.page.redirect(`/dashboard`)
         }
 
     }

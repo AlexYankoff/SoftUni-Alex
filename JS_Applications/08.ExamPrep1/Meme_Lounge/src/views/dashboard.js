@@ -36,6 +36,6 @@ export async function dashboardPage (ctx) {
     console.log('enter All Memes view')
 
     const data = await getAll()
-    console.log(data) 
+    
     ctx.render(dashboardTemplate(data))
     }

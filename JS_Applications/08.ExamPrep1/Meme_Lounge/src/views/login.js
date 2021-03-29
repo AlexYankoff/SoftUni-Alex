@@ -32,7 +32,7 @@ export async function loginPage (ctx) {
         await login(email, password) //сървърът проверява за грешка
 
         ctx.setUserNav()
-        ctx.page.redirect('/')
+        ctx.page.redirect('/dashboard')
     }
 
 

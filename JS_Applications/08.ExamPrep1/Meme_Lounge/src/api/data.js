@@ -23,14 +23,14 @@ export async function getMyFurniture() {
 }
 
 export async function createRecord(data) {
-    return await api.post(host+'/data/catalog', data) 
+    return await api.post(host+'/data/memes', data) 
     
 }
 
 export async function editRecord(id, data) {
-    return await api.put(host+'/data/catalog/'+id, data);
+    return await api.put(host+'/data/memes/'+id, data);
 }
 
 export async function deleteRecord(id) {
-    return await api.del(host+'/data/catalog/'+id);
+    return await api.del(host+'/data/memes/'+id);
 }
