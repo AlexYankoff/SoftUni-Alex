@@ -9,7 +9,7 @@ export const register = api.register;
 export const logout = api.logout;
 
 //Implement  application-specific requests
-export async function getFurniture() { 
+export async function getItem() { 
     return await api.get(host+'/data/catalog'); 
 }
 
@@ -17,7 +17,7 @@ export async function getItemById(id) {
     return await api.get(host+'/data/catalog/'+id)
 }
 
-export async function getMyFurniture() {
+export async function getMy() {
     const userId = sessionStorage.getItem('userId')
     return await api.get(host+`/data/catalog?where=_ownerId%3D%22${userId}%22`)
 }

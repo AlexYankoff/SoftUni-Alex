@@ -1,5 +1,5 @@
 import { html } from '/../../node_modules/lit-html/lit-html.js'
-import { getMyFurniture} from '../api/data.js'
+import { getMy} from '../api/data.js'
 
 const myTemplate = (data) => html `
 <div class="row space-top">
@@ -22,6 +22,6 @@ const itemTemplate =(item) => html `
     </div>
 </div>`;
 export async function myPage (ctx) {
-    const data = await getMyFurniture()
+    const data = await getMy()
     ctx.render(myTemplate(data))
     }

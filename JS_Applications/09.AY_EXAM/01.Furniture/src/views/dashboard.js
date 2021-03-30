@@ -1,5 +1,5 @@
 import { html } from '/../../node_modules/lit-html/lit-html.js'
-import { getFurniture} from '../api/data.js'
+import { getItem} from '../api/data.js'
 
 
 const dashboardTemplate = (data) => html `
@@ -24,7 +24,7 @@ const itemTemplate =(item) => html `
 </div>`;
 
 export async function dashboardPage (ctx) {
-    const data = await getFurniture()
+    const data = await getItem()
       
     ctx.render(dashboardTemplate(data))
     }
