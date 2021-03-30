@@ -7,11 +7,11 @@ async function request(url, options) {
     try {
         const response = await fetch(url, options);
 
-        if (response.ok == false) {
+        if (response.ok == false) { //Error from server
             const error = await response.json();
             throw new Error(error.message);
         } 
-        try {
+        try { //аko респонса не е jason, хвърля грешка 
             const data = await response.json()
             return data;
         } catch (err) {
@@ -20,7 +20,7 @@ async function request(url, options) {
         
     } catch (err) {
         alert(err.message);
-        throw err;
+        throw err; // прехвърля ногоре, към модулите, които са извикали ф-та
     }
 }
 
@@ -63,7 +63,7 @@ export async function login(email, password) {
     const result =  await post(settings.host + '/users/login', {email, password});
 
     sessionStorage.setItem('email', result.email);
-    sessionStorage.setItem('authToken', result.accessToken);
+    sessionStorage.setItem('authToken', result.accessToken); //authtoken used in functino getOptins
     sessionStorage.setItem('userId', result._id);
 
     return result;
