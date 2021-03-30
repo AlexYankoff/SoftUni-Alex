@@ -1,6 +1,8 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { register } from '../api/data.js'
 
+// DON'T FORGET TO ADD @sumbit to form
+
 const registerTemplate = (onSubmit,invalidEmail, invalidPassword,invalidRe )=> html `
 <div class="row space-top">
             <div class="col-md-12">

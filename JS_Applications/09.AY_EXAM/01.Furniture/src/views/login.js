@@ -1,6 +1,7 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { login } from '../api/data.js'
 
+// DON'T FORGET TO ADD @sumbit to form
 
 const loginTemplate = (onSubmit) => html`
 <div class="row space-top">

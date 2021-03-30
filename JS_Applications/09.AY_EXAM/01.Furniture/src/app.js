@@ -5,9 +5,9 @@ console.log('app.js started')
 import page from '../node_modules/page/page.mjs';
 import { render } from '../node_modules/lit-html/lit-html.js'
 
-//import {logout } from './api/data.js'
 import { homePage } from './views/home.js'
-//import { dashboardPage } from './views/dashboard.js'
+import { dashboardPage } from './views/dashboard.js'
+//import {logout } from './api/data.js'
 //import {myPage} from './views/myview.js'
 //import {detailsPage} from './views/details.js'
 //import {createPage} from './views/create.js'
@@ -37,7 +37,7 @@ page('/', decorateContext, homePage)
 //    page.redirect('/')
 //})
 //
-//setUserNav() // викаме я при стартиране, ако вече има логнат потребител
+setUserNav() // викаме я при стартиране, ако вече има логнат потребител
 //
 //Start application
 page.start();
@@ -45,21 +45,22 @@ page.start();
 function decorateContext(ctx, next) {
     console.log('enter decorate')
     ctx.render = (ctx) => render(ctx, main)
-//    ctx.setUserNav = setUserNav
+    ctx.setUserNav = setUserNav
     next()
 }
 //
-//function setUserNav() {
-//    const userId = sessionStorage.getItem('userId');  //или authToken или email, едно и също е
-//    if (userId !=null) {
-//        document.getElementById('user').style.display = 'inline-block';
-//        document.getElementById('guest').style.display = 'none'
-//    } else {
-//        document.getElementById('user').style.display = 'none';
-//        document.getElementById('guest').style.display = 'inline-block'
-//    }
-//}
-//
+function setUserNav() {
+    console.log( "need to setup Nav")
+    //const userId = sessionStorage.getItem('userId');  //или authToken или email, едно и също е
+    //if (userId !=null) {
+    //    document.getElementById('user').style.display = 'inline-block';
+    //    document.getElementById('guest').style.display = 'none'
+    //} else {
+    //    document.getElementById('user').style.display = 'none';
+    //    document.getElementById('guest').style.display = 'inline-block'
+    //}
+}
+
 
 
 

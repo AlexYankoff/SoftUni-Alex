@@ -1,6 +1,8 @@
 import {html} from '../../node_modules/lit-html/lit-html.js'
 import {getItemById, deleteRecord} from '../api/data.js'
 
+// DON'T FORGET TO ADD @click to Delete button
+
 const detailsTemplate = (item, isOwner, onDelete) => html `
 <div class="row space-top">
             <div class="col-md-12">
