@@ -4,7 +4,7 @@ const { expect } = require('chai');
 
 const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
 const interval = 300;
-const DEBUG = false;
+const DEBUG = true;
 const slowMo = 500;
 
 const mockData = require('./mock-data.json');
@@ -42,7 +42,7 @@ describe('E2E tests', function () {
 
 
     // Test proper
-    describe('Authentication [ 20 Points ]', () => {
+    describe('Authentication [ 20 Points ]', () => {//OK
         it('register does not work with empty fields [ 5 Points ]', async () => {
             const { post } = await handle(endpoints.register);
             const isCalled = post().isHandled;
@@ -146,7 +146,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe('Navigation bar [ 5 Points ]', () => {
+    describe('Navigation bar [ 5 Points ]', () => {//OK
         it('logged user should see correct navigation [ 2.5 Points ]', async () => {
             // Login user
             const data = mockData.users[0];
@@ -191,7 +191,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe('Catalog [ 25 Points ]', () => {
+    describe('Catalog [ 25 Points ]', () => { //OK
         it('loads static home page [ 5 Points ]', async () => {
             await page.goto(host);
             await page.waitForTimeout(interval);
@@ -365,7 +365,7 @@ describe('E2E tests', function () {
             expect(isHandled()).to.be.true;
         });
 
-        it('edit does NOT work with empty fields [ 5 Points ]', async () => {
+        it('edit does NOT work with empty fields [ 5 Points ]', async () => { //OK
             const data = mockData.catalog[0];
             const { get, put } = await handle(endpoints.delete(data._id));
             get(data);
@@ -396,7 +396,7 @@ describe('E2E tests', function () {
             expect(isHandled()).to.be.false;
         });
 
-        it('edit should populate form with correct data [ 5 Points ]', async () => {
+        it('edit should populate form with correct data [ 5 Points ]', async () => {//OK
             const data = mockData.catalog[0];
             const { get } = await handle(endpoints.delete(data._id));
             get(data);
@@ -420,7 +420,7 @@ describe('E2E tests', function () {
             expect(inputs[5]).to.contains(data.price);
         });
 
-        it('edit makes correct API call for logged in user [ 5 Points ]', async () => {
+        it('edit makes correct API call for logged in user [ 5 Points ]', async () => {//OK
             const data = mockData.catalog[0];
             const { get, put } = await handle(endpoints.delete(data._id));
             get(data);

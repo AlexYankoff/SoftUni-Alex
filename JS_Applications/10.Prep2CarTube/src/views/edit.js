@@ -1,7 +1,40 @@
 import {html} from '../../node_modules/lit-html/lit-html.js'
 import {getItemById, editRecord} from '../api/data.js'
 
-const editTemplate = (item, onSubmit) => html `
+const editTemplate = (item, onSubmit) => html`
+<section id="edit-listing">
+            <div class="container">
+
+                <form @submit = ${onSubmit} id="edit-form">
+                    <h1>Edit Car Listing</h1>
+                    <p>Please fill in this form to edit an listing.</p>
+                    <hr>
+
+                    <p>Car Brand</p>
+                    <input type="text" placeholder="Enter Car Brand" name="brand" .value=${item.brand}>
+
+                    <p>Car Model</p>
+                    <input type="text" placeholder="Enter Car Model" name="model" .value=${item.model}>
+
+                    <p>Description</p>
+                    <input type="text" placeholder="Enter Description" name="description" .value=${item.description}>
+
+                    <p>Car Year</p>
+                    <input type="number" placeholder="Enter Car Year" name="year" value="" .value=${item.year}>
+
+                    <p>Car Image</p>
+                    <input type="text" placeholder="Enter Car Image" name="imageUrl" .value=${item.imageUrl}>
+
+                    <p>Car Price</p>
+                    <input type="number" placeholder="Enter Car Price" name="price" .value=${item.price}>
+
+                    <hr>
+                    <input type="submit" class="registerbtn" value="Edit Listing">
+                </form>
+            </div>
+        </section>`;
+
+const OLDeditTemplate = (item, onSubmit) => html `
 <div class="row space-top">
             <div class="col-md-12">
                 <h1>Edit Furniture</h1>
@@ -60,17 +93,26 @@ export async function editPage (ctx) {
         event.preventDefault()
         const formData = new FormData(event.target)
 
-        //MAKE OBJECT FROM ALL FORM FIELDS
-        const data = ([...formData.entries()].reduce((a, [k,v]) => Object.assign(a, {[k]:v}), {}));
+        const data = {
+            brand:formData.get('brand'),
+            model:formData.get('model'),
+            description:formData.get('description'),
+            year: Number(formData.get('year')),
+            imageUrl:formData.get('imageUrl'),
+            price: Number(formData.get('price'))
+        }
 
-        //VALIDATION IF ANY FIELD IS EMPTY (MATERIAL EXCLUDED)
-        if  (Object.entries(data).filter(([k, v]) => k!='material').some(([k,v]) => v=='')){
+        if  (data.brand == '' || data.model =='' || 
+             data.description == '' || data.imageUrl ==''){
             return alert('Missing data!');
+        }
+        if (data.year<=0 || data.price <=0) {
+            return alert('Year and price should be positive numbers!')
         }
     
     await editRecord(item._id, data)
 
-    ctx.page.redirect('/');
+    ctx.page.redirect('/details/'+id);
     }
 
     
