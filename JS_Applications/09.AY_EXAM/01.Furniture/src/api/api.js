@@ -80,11 +80,11 @@ export async function register(email, password) {
 }
 
 export async function logout() {
-    const result =  await get(settings.host + '/users/logout');
+    get(settings.host + '/users/logout');
 
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('authToken');
     sessionStorage.removeItem('userId');
 
-    return result;
+    // без await викаме, не ни трябва резултат
 }
