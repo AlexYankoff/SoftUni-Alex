@@ -24,8 +24,8 @@ const main = document.querySelector('main')// SET IT
 page('/', decorateContext, homePage)
 page('/dashboard', decorateContext, dashboardPage); //Movies
 //page('/myview', decorateContext, myPage);
-//page('/details/:id', decorateContext, detailsPage);// в контекста имаме и id
-//page('/create', decorateContext, createPage); 
+page('/details/:id', decorateContext, detailsPage);// в контекста имаме и id
+page('/create', decorateContext, createPage); 
 //page('/edit/:id', decorateContext,editPage);
 //page('/register', decorateContext,registerPage);
 page('/login', decorateContext, loginPage);

@@ -22,8 +22,8 @@ const main = document.querySelector('main')// SET IT
 //
 ////routing table - изпълнява дадената ф-я и й подава context
 page('/', decorateContext, homePage)
-//page('/', decorateContext, dashboardPage); //view Controller
-//page('/my-furniture', decorateContext, myPage);
+//page('/dashboard', decorateContext, dashboardPage); //view Controller
+//page('/myview', decorateContext, myPage);
 //page('/details/:id', decorateContext, detailsPage);// в контекста имаме и id
 //page('/create', decorateContext, createPage); 
 //page('/edit/:id', decorateContext,editPage);

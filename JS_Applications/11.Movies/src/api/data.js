@@ -17,10 +17,23 @@ export async function getItemById(id) {///OK, tested
     return await api.get(host+'/data/movies/'+id) 
 }
 
+//LIKES
+export async function getLikes(movieId){ //for specific movie
+    return await api.get(host+`/data/likes?where=movieId%3D%22${movieId}%22&distinct=_ownerId&count`)
+}
+
+export async function getUserLikes(movieId, userId){
+    return await api.get(host+`/data/likes?where=movieId%3D%22${movieId}%22%20and%20_ownerId%3D%22${userId}%22`)
+}
+export async function addLike(data) {
+    return await api.post(host+'/data/likes', data)
+}
+
 export async function getMy() { //??? не го видях в заданието
     const userId = sessionStorage.getItem('userId')
     return await api.get(host+`/data/catalog?where=_ownerId%3D%22${userId}%22`)
 }
+
 
 export async function createRecord(data) { //OK
     return await api.post(host+'/data/movies', data) 
