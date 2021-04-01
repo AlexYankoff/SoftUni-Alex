@@ -1,6 +1,8 @@
 import {html} from '../../node_modules/lit-html/lit-html.js'
 import {getItemById, editRecord} from '../api/data.js'
 
+// DON'T FORGET TO ADD @sumbit to form
+
 const editTemplate = (item, onSubmit) => html `
 <div class="row space-top">
             <div class="col-md-12">
