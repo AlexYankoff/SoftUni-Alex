@@ -3,27 +3,27 @@ import { login } from '../api/data.js'
 
 
 const loginTemplate = (onSubmit) => html`
- <section id="login">
-            <div class="container">
-                <form @submit =${onSubmit} id="login-form" action="#" method="post">
-                    <h1>Login</h1>
-                    <p>Please enter your credentials.</p>
-                    <hr>
-
-                    <p>Username</p>
-                    <input placeholder="Enter Username" name="username" type="text">
-
-                    <p>Password</p>
-                    <input type="password" placeholder="Enter Password" name="password">
-                    <input type="submit" class="registerbtn" value="Login">
-                </form>
-                <div class="signin">
-                    <p>Dont have an account?
-                        <a href="#">Sign up</a>.
-                    </p>
+<div class="row space-top">
+            <div class="col-md-12">
+                <h1>Login User</h1>
+                <p>Please fill all fields.</p>
+            </div>
+        </div>
+        <form @submit = ${onSubmit}>
+            <div class="row space-top">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-control-label" for="email">Email</label>
+                        <input class="form-control" id="email" type="text" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="password">Password</label>
+                        <input class="form-control" id="password" type="password" name="password">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Login" />
                 </div>
             </div>
-        </section>`;
+        </form>`;
 
 export async function loginPage (ctx) {
     ctx.render(loginTemplate(onSubmit))
@@ -31,14 +31,13 @@ export async function loginPage (ctx) {
     async function onSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
-        const username = formData.get('username').trim()
+        const email = formData.get('email').trim()
         const password = formData.get('password').trim();
 
-        await login(username, password) //сървърът проверява за грешка
+        await login(email, password) //сървърът проверява за грешка
 
         ctx.setUserNav()
-        document.getElementById('usr').textContent = `Welcome ${username}`
-        ctx.page.redirect('/dashboard')
+        ctx.page.redirect('/')
     }
 
 
