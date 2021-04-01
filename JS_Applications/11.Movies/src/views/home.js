@@ -55,7 +55,9 @@ const movieTemplate = (item) => html`
     
 
 export async function homePage (ctx) {
+
     console.log('enter home.js')
+    
     const data = await getItem()
     
 

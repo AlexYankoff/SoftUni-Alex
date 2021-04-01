@@ -6,7 +6,7 @@ import page from '../node_modules/page/page.mjs';
 import { render } from '../node_modules/lit-html/lit-html.js'
 
 import { homePage } from './views/home.js'
-import { dashboardPage } from './views/dashboard.js'
+
 import {logout } from './api/data.js'
 import {myPage} from './views/myview.js'
 import {detailsPage} from './views/details.js'
@@ -22,7 +22,7 @@ const main = document.querySelector('main')// SET IT
 //
 ////routing table - изпълнява дадената ф-я и й подава context
 page('/', decorateContext, homePage)
-page('/dashboard', decorateContext, dashboardPage); //Movies
+//page('/dashboard', decorateContext, dashboardPage); //Movies
 //page('/myview', decorateContext, myPage);
 page('/details/:id', decorateContext, detailsPage);// в контекста имаме и id
 page('/create', decorateContext, createPage); 
@@ -34,7 +34,7 @@ page('/login', decorateContext, loginPage);
 document.getElementById('logoutBtn').addEventListener('click',async () => {
     await logout();
     setUserNav() //ъпдейтваме навигацията при logout!
-    page.redirect('/login')
+    page.redirect('/')
 })
 //
 setUserNav() // викаме я при стартиране, ако вече има логнат потребител
