@@ -3,7 +3,7 @@ const { chromium } = require('playwright-chromium');
 const { expect } = require('chai');
 
 const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
-const DEBUG = false;
+const DEBUG = true;
 
 const mockData = require('./mock-data.json');
 const endpoints = {
@@ -99,7 +99,7 @@ describe('E2E tests', function () {
 
             expect(title).to.equal(mockData.details.title);
             expect(desc).to.equal(mockData.details.description);
-            expect(img).to.equal(mockData.details.img);
+            expect(img).to.contains(mockData.details.img);
         });
 
         it('guest does NOT see delete button', async () => {
@@ -130,7 +130,7 @@ describe('E2E tests', function () {
 
             await page.fill('[name="email"]', email);
             await page.fill('[name="password"]', password);
-            await page.fill('[name="repeatPassword"]', password);
+            await page.fill('[name="rePass"]', password);
 
             const [response] = await Promise.all([
                 page.waitForResponse(endpoint),
@@ -206,7 +206,7 @@ describe('E2E tests', function () {
 
             await page.fill('[name="title"]', mock.title);
             await page.fill('[name="description"]', mock.description);
-            await page.fill('[name="imageURL"]', mock.img);
+            await page.fill('[name="img"]', mock.img);
 
             const [response] = await Promise.all([
                 page.waitForResponse(endpoint),

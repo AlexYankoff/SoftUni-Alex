@@ -8,7 +8,7 @@ const loginTemplate = (onSubmit) => html`
             <div class="col-md-4">
                 <img class="responsive" src="/images/idea.png" alt="">
             </div>
-            <form class="form-user col-md-7" action="" method="">
+            <form  @submit = ${onSubmit} class="form-user col-md-7" action="" method="">
                 <div class="text-center mb-4">
                     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
                 </div>

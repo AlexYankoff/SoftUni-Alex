@@ -9,7 +9,7 @@ const createTemplate = (onSubmit,invDesc) => html `
             <div class="col-md-6">
                 <img class="responsive-ideas create" src="./images/creativity_painted_face.jpg" alt="">
             </div>
-            <form class="form-idea col-md-5" action="#/create" method="post">
+            <form @submit = ${onSubmit} class="form-idea col-md-5">
                 <div class="text-center mb-4">
                     <h1 class="h3 mb-3 font-weight-normal">Share Your Idea</h1>
                 </div>
@@ -25,7 +25,7 @@ const createTemplate = (onSubmit,invDesc) => html `
                 </div>
                 <div class="form-label-group">
                     <label for="inputURL">Add Image</label>
-                    <input type="text" id="imageURl" name="imageURL" class="form-control" placeholder="Image URL"
+                    <input type="text" id="imageURl" name="img" class="form-control" placeholder="Image URL"
                         required="">
 
                 </div>
@@ -135,6 +135,6 @@ export async function createPage (ctx) {
     console.log(data);
     await createRecord(data)
 
-    ctx.page.redirect('/');
+    ctx.page.redirect('/dashboard');
     }
 }

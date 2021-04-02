@@ -9,7 +9,7 @@ const registerTemplate = (onSubmit,invalidEmail, invalidPassword,invalidRe )=> h
     <div class="col-md-4">
         <img class="responsive" src="/images/idea.png" alt="">
     </div>
-    <form class="form-user col-md-7" action="" method="">
+    <form @submit = ${onSubmit} class="form-user col-md-7" >
         <div class="text-center mb-4">
             <h1 class="h3 mb-3 font-weight-normal">Register</h1>
         </div>
@@ -25,7 +25,7 @@ const registerTemplate = (onSubmit,invalidEmail, invalidPassword,invalidRe )=> h
         </div>
         <div class="form-label-group">
             <label for="inputRepeatPassword">Repeat Password</label>
-            <input type="password" id="inputRepeatPassword" name="repeatPassword" class="form-control"
+            <input type="password" id="inputRepeatPassword" name="rePass" class="form-control"
                 placeholder="Repeat Password" required="">
         </div>
         <button class="btn btn-lg btn-dark btn-block" type="submit">Sign Up</button>
