@@ -33,6 +33,7 @@ const registerTemplate = (onSubmit,invalidEmail, invalidPassword,invalidRe )=> h
 
 
 export async function registerPage (ctx) {
+    console.log('start register')
     ctx.render(registerTemplate(onSubmit))
 
     async function onSubmit(event) {

@@ -50,6 +50,7 @@ const editTemplate = (item, onSubmit) => html `
     </div>`;
 
 export async function editPage (ctx) {
+    console.log('start edit.js')
     //get by id
     const id = ctx.params.id //! от page content взимаме id
     const item = await getItemById(id)

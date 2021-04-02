@@ -27,6 +27,7 @@ const loginTemplate = (onSubmit) => html`
         </form>`;
 
 export async function loginPage (ctx) {
+    console.log('start loing.js')
     ctx.render(loginTemplate(onSubmit))
 
     async function onSubmit(event) {

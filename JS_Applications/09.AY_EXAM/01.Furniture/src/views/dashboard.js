@@ -24,7 +24,8 @@ const itemTemplate =(item) => html `
 </div>`;
 
 export async function dashboardPage (ctx) {
+    console.log('start dashboard.js')
     const data = await getItem()
-      
+    console.log(data)  
     ctx.render(dashboardTemplate(data))
     }

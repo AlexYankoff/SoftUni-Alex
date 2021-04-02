@@ -36,6 +36,7 @@ const detailsTemplate = (item, isOwner, onDelete) => html `
 
 
 export async function detailsPage (ctx) {
+    console.log('start details.js')
     const id = ctx.params.id //! от page content взимаме id
     const item = await getItemById(id)
 
@@ -44,6 +45,7 @@ export async function detailsPage (ctx) {
 
 
     async function onDelete() {
+        console.log('start onDelete')
         const confirmed = confirm('Are you sure you want to delete this item?')
         if (confirmed) {
             await deleteRecord(id);

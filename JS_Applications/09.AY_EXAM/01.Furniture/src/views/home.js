@@ -13,6 +13,7 @@ const homeTemplate = () => html `
 </section>`;
 
 export async function homePage (ctx) {
+    console.log('start home.js')
         
     ctx.render(homeTemplate())
     }

@@ -22,6 +22,7 @@ const itemTemplate =(item) => html `
     </div>
 </div>`;
 export async function myPage (ctx) {
+    console.log('start myview.js')
     const data = await getMy()
     ctx.render(myTemplate(data))
     }

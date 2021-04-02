@@ -49,6 +49,7 @@ const createTemplate = (onSubmit,invDesc) => html `
         </form>`;
 
 export async function createPage (ctx) {
+    console.log('start create.js')
     ctx.render(createTemplate(onSubmit));
     
     async function onSubmit(event) {
@@ -60,14 +61,17 @@ export async function createPage (ctx) {
         const data = ([...formData.entries()].reduce((a, [k,v]) => Object.assign(a, {[k]:v}), {}));
         
         //VALIDATION IF ANY FIELD IS EMPTY (MATERIAL EXCLUDED)
+        
+        if  (Object.entries(data).filter(([k, v]) => k!='material').some(([k,v]) => v=='')){
+            return alert('Missing data!');
+        }
+        /*
         let invMake = false;
         let invModel =false;
         let invDesc = false
         let problem = false
-         
-        if  (Object.entries(data).filter(([k, v]) => k!='material').some(([k,v]) => v=='')){
-            return alert('Missing data!');
-        }
+
+
         if (data.make.length<4){
              invMake = true;
              problem = true;
@@ -94,6 +98,8 @@ export async function createPage (ctx) {
 
     data.year = Number(data.year);
     data.price = Number(data.price); 
+    */
+    console.log(data);
     await createRecord(data)
 
     ctx.page.redirect('/');
