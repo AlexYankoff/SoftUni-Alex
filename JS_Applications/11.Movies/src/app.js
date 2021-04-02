@@ -22,11 +22,11 @@ const main = document.querySelector('main')// SET IT
 //
 ////routing table - изпълнява дадената ф-я и й подава context
 page('/', decorateContext, homePage)
-//page('/dashboard', decorateContext, dashboardPage); //Movies
+//page('/dashboard', decorateContext, dashboardPage); // Не ни трябва
 //page('/myview', decorateContext, myPage);
 page('/details/:id', decorateContext, detailsPage);// в контекста имаме и id
 page('/create', decorateContext, createPage); 
-//page('/edit/:id', decorateContext,editPage);
+page('/edit/:id', decorateContext,editPage);
 //page('/register', decorateContext,registerPage);
 page('/login', decorateContext, loginPage);
 //

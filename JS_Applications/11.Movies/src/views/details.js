@@ -2,6 +2,7 @@ import {html} from '../../node_modules/lit-html/lit-html.js'
 import {getItemById, deleteRecord, addLike, getLikes,getUserLikes} from '../api/data.js'
 
 // DON'T FORGET TO ADD @click to Delete button
+// DON'T FORGET id in edit link
 
 const detailsTemplate = (item, isOwner, onDelete, addlike, likes,UserLikesCounter) => html `
 <section id="movie-example">
@@ -18,10 +19,10 @@ const detailsTemplate = (item, isOwner, onDelete, addlike, likes,UserLikesCounte
             <p>Natasha Romanoff aka Black Widow confronts the darker parts of her ledger when a dangerous conspiracy
                 with ties to her past arises. Comes on the screens 2020.</p>
             ${isOwner ? html `<a @click=${onDelete} class="btn btn-danger" href="javascript:void(0)">Delete</a>` : ''}
-            ${isOwner ? html `<a class="btn btn-warning" href="#">Edit</a>` : ''}
+            ${isOwner ? html `<a class="btn btn-warning" href="/edit/${item._id}">Edit</a>` : ''}
             
             ${UserLikesCounter ? '': html`
-            <a @click = ${addlike} id = ${item._id} class="btn btn-primary" href="javascript:void(0)">Like</a>`}
+            <a @click = ${addlike}  class="btn btn-primary" href="javascript:void(0)">Like</a>`}
             <span class="enrolled-span">Liked ${likes}</span>
         </div>
     </div>

@@ -1,9 +1,29 @@
 import {html} from '../../node_modules/lit-html/lit-html.js'
 import {getItemById, editRecord} from '../api/data.js'
 
-// DON'T FORGET TO ADD @sumbit to form
+// DON'T FORGET TO ADD @submit =${onSubmit} to form
 
 const editTemplate = (item, onSubmit) => html `
+<section id="edit-movie">
+    <form @submit =${onSubmit} class="text-center border border-light p-5" action="#" method="">
+        <h1>Edit Movie</h1>
+        <div class="form-group">
+            <label for="title">Movie Title</label>
+            <input type="text" class="form-control" placeholder="Movie Title"  name="title" .value=${item.title}>
+        </div>
+        <div class="form-group">
+            <label for="description">Movie Description</label>
+            <textarea class="form-control" placeholder="Movie Description..." name="description" .value=${item.description}></textarea>
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Image url</label>
+            <input type="text" class="form-control" placeholder="Image Url" value="" name="img" .value=${item.img}>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </section>`
+
+const OLDeditTemplate = (item, onSubmit) => html `
 <div class="row space-top">
             <div class="col-md-12">
                 <h1>Edit Furniture</h1>
@@ -50,26 +70,26 @@ const editTemplate = (item, onSubmit) => html `
     </div>`;
 
 export async function editPage (ctx) {
+    console.log('влиза в edit.js')
     //get by id
     const id = ctx.params.id //! от page content взимаме id
     const item = await getItemById(id)
-    //console.log(item)
+    console.log(item)
 
 
     ctx.render(editTemplate(item, onSubmit))
 
     async function onSubmit(event) {
+        console.log('влиза в submit')
         event.preventDefault()
         const formData = new FormData(event.target)
-
-        //MAKE OBJECT FROM ALL FORM FIELDS
+//       //MAKE OBJECT FROM ALL FORM FIELDS
         const data = ([...formData.entries()].reduce((a, [k,v]) => Object.assign(a, {[k]:v}), {}));
-
-        //VALIDATION IF ANY FIELD IS EMPTY (MATERIAL EXCLUDED)
+//       //VALIDATION IF ANY FIELD IS EMPTY (MATERIAL EXCLUDED)
         if  (Object.entries(data).filter(([k, v]) => k!='material').some(([k,v]) => v=='')){
             return alert('Missing data!');
         }
-    
+    console.log(data)
     await editRecord(item._id, data)
 
     ctx.page.redirect('/');
