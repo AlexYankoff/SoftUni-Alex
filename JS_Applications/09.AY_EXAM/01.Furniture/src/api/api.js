@@ -62,7 +62,9 @@ export async function del(url) {
 export async function login(email, password) {
     const result =  await post(settings.host + '/users/login', {email, password});
 
-    sessionStorage.setItem('email', result.email);
+    console.log(result)
+
+    sessionStorage.setItem('email', result.email); // Check, normally server returns only email or only username
     sessionStorage.setItem('authToken', result.accessToken); //authtoken used in functino getOptins
     sessionStorage.setItem('userId', result._id);
 
@@ -71,6 +73,8 @@ export async function login(email, password) {
 
 export async function register(email, password) {
     const result =  await post(settings.host + '/users/register', {email, password});
+    
+    console.log(result);
 
     sessionStorage.setItem('email', result.email);
     sessionStorage.setItem('authToken', result.accessToken);
