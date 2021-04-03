@@ -23,7 +23,7 @@ const registerTemplate = (onSubmit,invalidEmail, invalidPassword,invalidRe )=> h
                     </div>
                     <div class="form-group">
                         <label class="form-control-label" for="rePass">Repeat</label>
-                        <input class="${'form-control'+ (invalidRe ? ' is-invalid' : '')} type="password" name="rePass">
+                        <input class=${'form-control'+ (invalidRe ? ' is-invalid' : '')} type="password" name="rePass">
                     </div>
                     <input type="submit" class="btn btn-primary" value="Register" />
                 </div>

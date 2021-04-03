@@ -4,6 +4,30 @@ import {getItemById, deleteRecord} from '../api/data.js'
 // DON'T FORGET TO ADD @click=${onDelete} to Delete button
 
 const detailsTemplate = (item, isOwner, onDelete) => html `
+<section id="meme-details">
+            <h1>Meme Title: ${item.title}
+
+            </h1>
+            <div class="meme-details">
+                <div class="meme-img">
+                    <img alt="meme-alt" src=${item.imageUrl}>
+                </div>
+                <div class="meme-description">
+                    <h2>Meme Description</h2>
+                    <p>
+                        ${item.description}
+                    </p>
+
+                    <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
+                    ${isOwner ? html`
+                    <a class="button warning" href=${`/edit/${item._id}`}>Edit</a>
+                    <button @click=${onDelete}  class="button danger">Delete</button>`:  ''};
+                    
+                </div>
+            </div>
+        </section>`;
+
+const OLDdetailsTemplate = (item, isOwner, onDelete) => html `
 <div class="row space-top">
             <div class="col-md-12">
                 <h1>Furniture Details</h1>

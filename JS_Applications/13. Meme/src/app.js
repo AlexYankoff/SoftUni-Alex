@@ -51,14 +51,16 @@ function decorateContext(ctx, next) {
 //
 function setUserNav() {
     console.log( "need to setup Nav")
-    //const userId = sessionStorage.getItem('userId');  //или authToken или email, едно и също е
-    //if (userId !=null) {
-    //    document.getElementById('user').style.display = 'inline-block';
-    //    document.getElementById('guest').style.display = 'none'
-    //} else {
-    //    document.getElementById('user').style.display = 'none';
-    //    document.getElementById('guest').style.display = 'inline-block'
-    //}
+    const userId = sessionStorage.getItem('userId');  //или authToken или email, едно и също е
+    const email = sessionStorage.getItem('email')
+    if (userId !=null) {
+        document.querySelector('.profile span').textContent = `Welcome, ${email}`
+        document.querySelector('.user').style.display = '';
+        document.querySelector('.guest').style.display = 'none'
+    } else {
+        document.querySelector('.user').style.display = 'none';
+        document.querySelector('.guest').style.display = ''
+    }
 }
 
 

@@ -2,8 +2,25 @@ import {html} from '../../node_modules/lit-html/lit-html.js'
 import {getItemById, editRecord} from '../api/data.js'
 
 // DON'T FORGET TO ADD @submit = ${onSubmit} to form
-
 const editTemplate = (item, onSubmit) => html `
+<section id="edit-meme">
+            <form  @submit = ${onSubmit} id="edit-form">
+                <h1>Edit Meme</h1>
+                <div class="container">
+                    <label for="title">Title</label>
+                    <input id="title" type="text" placeholder="Enter Title" name="title" .value=${item.title}>
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter Description" name="description" .value=${item.description}>
+                            
+                    </textarea>
+                    <label for="imageUrl">Image Url</label>
+                    <input id="imageUrl" type="text" placeholder="Enter Meme ImageUrl" name="imageUrl" .value=${item.imageUrl}>
+                    <input type="submit" class="registerbtn button" value="Edit Meme">
+                </div>
+            </form>
+        </section>`;
+
+const OLDeditTemplate = (item, onSubmit) => html `
 <div class="row space-top">
             <div class="col-md-12">
                 <h1>Edit Furniture</h1>
@@ -72,8 +89,9 @@ export async function editPage (ctx) {
         }
     
     await editRecord(item._id, data)
+    
 
-    ctx.page.redirect('/');
+    ctx.page.redirect(`/details/${item._id}`);
     }
 
     

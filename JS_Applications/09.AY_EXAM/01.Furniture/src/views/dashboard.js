@@ -1,6 +1,9 @@
 import { html } from '/../../node_modules/lit-html/lit-html.js'
 import { getItem} from '../api/data.js'
 
+// IF Display is different if no data:
+    //${data.length == 0 ? html `<p class="no-memes">No memes in database.</p>`: data.map(itemTemplate)}
+
 
 const dashboardTemplate = (data) => html `
 <div class="row space-top">

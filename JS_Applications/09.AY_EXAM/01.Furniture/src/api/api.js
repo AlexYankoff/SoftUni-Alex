@@ -82,9 +82,6 @@ export async function register(email, password) {
 export async function logout() {
     get(settings.host + '/users/logout');
 
-    sessionStorage.removeItem('email');
-    sessionStorage.removeItem('authToken');
-    sessionStorage.removeItem('userId');
-
+    sessionStorage.clear()
     // без await викаме, не ни трябва резултат
 }

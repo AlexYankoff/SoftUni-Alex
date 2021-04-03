@@ -65,14 +65,20 @@ export async function login(email, password) {
     sessionStorage.setItem('email', result.email);
     sessionStorage.setItem('authToken', result.accessToken); //authtoken used in functino getOptins
     sessionStorage.setItem('userId', result._id);
+    sessionStorage.setItem('username', result.username);
+    sessionStorage.setItem('gender', result.gender);
+
 
     return result;
 }
 
-export async function register(email, password) {
-    const result =  await post(settings.host + '/users/register', {email, password});
+export async function register(username, email, password, gender) {
+    const result =  await post(settings.host + '/users/register', {username, email, password, gender});
 
+    sessionStorage.setItem('username', username);
     sessionStorage.setItem('email', result.email);
+    sessionStorage.setItem('gender', gender)
+
     sessionStorage.setItem('authToken', result.accessToken);
     sessionStorage.setItem('userId', result._id);
 
@@ -82,9 +88,7 @@ export async function register(email, password) {
 export async function logout() {
     get(settings.host + '/users/logout');
 
-    sessionStorage.removeItem('email');
-    sessionStorage.removeItem('authToken');
-    sessionStorage.removeItem('userId');
+    sessionStorage.clear()
 
     // без await викаме, не ни трябва резултат
 }
