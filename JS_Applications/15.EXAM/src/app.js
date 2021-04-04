@@ -31,12 +31,12 @@ page('/register', decorateContext,registerPage);
 page('/login', decorateContext, loginPage);
 //
 //LOGOUT
-//document.getElementById('logoutBtn').addEventListener('click',async () => {
-//    await logout();
-//    setUserNav() //ъпдейтваме навигацията при logout!
-//    page.redirect('/')
-//})
-//
+document.getElementById('logoutBtn').addEventListener('click',async () => {
+    await logout();
+    setUserNav() //ъпдейтваме навигацията при logout!
+    page.redirect('/')
+})
+
 setUserNav() // викаме я при стартиране, ако вече има логнат потребител
 //
 //Start application
@@ -51,14 +51,14 @@ function decorateContext(ctx, next) {
 //
 function setUserNav() {
     console.log( "need to setup Nav")
-    //const userId = sessionStorage.getItem('userId');  //или authToken или email, едно и също е
-    //if (userId !=null) {
-    //    document.getElementById('user').style.display = 'inline-block';
-    //    document.getElementById('guest').style.display = 'none'
-    //} else {
-    //    document.getElementById('user').style.display = 'none';
-    //    document.getElementById('guest').style.display = 'inline-block'
-    //}
+    const userId = sessionStorage.getItem('userId');  //или authToken или email, едно и също е
+    if (userId !=null) {
+        document.getElementById('user').style.display = '';
+        document.getElementById('guest').style.display = 'none'
+    } else {
+        document.getElementById('user').style.display = 'none';
+        document.getElementById('guest').style.display = ''
+    }
 }
 
 
