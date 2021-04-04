@@ -12,8 +12,8 @@ const detailsTemplate = (item, isOwner, onDelete) => html `
                 
                 <div class="buttons">
                 ${isOwner ? html` <a @click=${onDelete} href='javascript:void(0)'class="btn delete">Delete</a>`: ''}
-                ${isOwner ? html` <a href="#" class="btn edit">Edit</a>`: ''}
-                    <a href="#" class="btn edit">Back</a>
+                ${isOwner ? html` <a href=${`/edit/${item._id}`} class="btn edit">Edit</a>`: ''}
+                    <a href="/" class="btn edit">Back</a>
                 </div> ;
             </div>
         </section>`;

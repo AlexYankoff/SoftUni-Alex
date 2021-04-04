@@ -4,6 +4,34 @@ import {getItemById, editRecord} from '../api/data.js'
 // DON'T FORGET TO ADD @submit = ${onSubmit} to form
 
 const editTemplate = (item, onSubmit) => html `
+<section id="edit-page" class="content">
+            <h1>Edit Article</h1>
+
+            <form @submit = ${onSubmit} id="edit" action="#" method="">
+                <fieldset>
+                    <p class="field title">
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" id="title" placeholder="Enter article title" .value=${item.title}>
+                    </p>
+
+                    <p class="field category">
+                        <label for="category">Category:</label>
+                        <input type="text" name="category" id="category" placeholder="Enter article category" .value=${item.category}>
+                    </p>
+                    <p class="field">
+                        <label for="content">Content:</label>
+                        <textarea name="content" id="content" .value=${item.content}></textarea>
+                    </p>
+
+                    <p class="field submit">
+                        <input class="btn submit" type="submit" value="Save Changes">
+                    </p>
+
+                </fieldset>
+            </form>
+        </section>`;
+
+const OLDeditTemplate = (item, onSubmit) => html `
 <div class="row space-top">
             <div class="col-md-12">
                 <h1>Edit Furniture</h1>

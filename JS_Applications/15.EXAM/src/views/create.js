@@ -4,6 +4,34 @@ import {createRecord} from '../api/data.js'
 // DON'T FORGET TO ADD @sumbit to form
 
 const createTemplate = (onSubmit,invDesc) => html `
+<section id="create-page" class="content">
+            <h1>Create Article</h1>
+
+            <form @submit =${onSubmit} id="create" >
+                <fieldset>
+                    <p class="field title">
+                        <label for="create-title">Title:</label>
+                        <input type="text" id="create-title" name="title" placeholder="Enter article title">
+                    </p>
+
+                    <p class="field category">
+                        <label for="create-category">Category:</label>
+                        <input type="text" id="create-category" name="category" placeholder="Enter article category">
+                    </p>
+                    <p class="field">
+                        <label for="create-content">Content:</label>
+                        <textarea name="content" id="create-content"></textarea>
+                    </p>
+
+                    <p class="field submit">
+                        <input class="btn submit" type="submit" value="Create">
+                    </p>
+
+                </fieldset>
+            </form>
+        </section>`;
+
+const OLDcreateTemplate = (onSubmit,invDesc) => html `
 <div class="row space-top">
             <div class="col-md-12">
                 <h1>Create New Furniture</h1>
