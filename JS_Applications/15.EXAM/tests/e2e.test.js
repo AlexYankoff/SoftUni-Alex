@@ -42,7 +42,7 @@ describe('E2E tests', function () {
 
 
     // Test proper
-    describe('Authentication [ 20 Points ]', () => {
+    describe('Authentication [ 20 Points ]', () => { //OK passed
         it('register does not work with empty fields [ 5 Points ]', async () => {
             const { post } = await createHandler(endpoints.register, { post: {} });
 
@@ -141,7 +141,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe('Navigation bar [ 5 Points ]', () => {
+    describe('Navigation bar [ 5 Points ]', () => { //OK passed
         it('guest user should see correct navigation [ 2.5 Points ]', async () => {
             await page.goto(host);
             await page.waitForTimeout(interval);
@@ -182,7 +182,7 @@ describe('E2E tests', function () {
         });
     });
 
-    describe('Catalog [ 20 Points ]', () => {
+    describe('Catalog [ 20 Points ]', () => { //OK passed
         it('show empty catalog [ 2.5 Points ]', async () => {
             await createHandler(endpoints.catalog, { get: [] });
             await page.goto(host);

@@ -6,11 +6,27 @@ import { getItem} from '../api/data.js'
 
 
 const dashboardTemplate = (data) => html `
+    <section id="catalog-page" class="content catalogue">
+            <h1>All Articles</h1>
+            ${data.length == 0 ? html `<h3 class="no-articles">No articles yet</h3>`: data.map(itemTemplate)}
+            
+        </section>`;
+
+const itemTemplate =(item) => html `
+            <a class="article-preview" href=${`details/${item._id}`}>
+                <article>
+                    <h3>Topic: <span>${item.title}</span></h3>
+                    <p>Category: <span>${item.category}</span></p>
+                </article>
+            </a>`;
+
+const OLDdashboardTemplate = (data) => html `
 <div class="row space-top">
       ${data.map(itemTemplate)}      
 </div>`;
 
-const itemTemplate =(item) => html `
+
+const OLDitemTemplate =(item) => html `
  <div class="col-md-4">
     <div class="card text-white bg-primary">
         <div class="card-body">

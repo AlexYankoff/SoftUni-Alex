@@ -10,11 +10,11 @@ export const logout = api.logout;
 
 //Implement  application-specific requests
 export async function getItem() { 
-    return await api.get(host+'/data/catalog'); 
+    return await api.get(host+'/data/wiki?sortBy=_createdOn%20desc'); 
 }
 
 export async function getItemById(id) {
-    return await api.get(host+'/data/catalog/'+id)
+    return await api.get(host+'/data/wiki/'+id)
 }
 
 export async function getMy() {
@@ -23,14 +23,14 @@ export async function getMy() {
 }
 
 export async function createRecord(data) {
-    return await api.post(host+'/data/catalog', data) 
+    return await api.post(host+'/data/wiki', data) 
     
 }
 
 export async function editRecord(id, data) {
-    return await api.put(host+'/data/catalog/'+id, data);
+    return await api.put(host+'/data/wiki/'+id, data);
 }
 
-export async function deleteRecord(id) {
-    return await api.del(host+'/data/catalog/'+id);
+export async function deleteRecord(id) { //OK, tested
+    return await api.del(host+'/data/wiki/'+id);
 }
